@@ -1,0 +1,47 @@
+
+
+::selection { background-color: #C3CFE2; }
+
+.text {
+	font-size: 3vw;
+	font-family: 'Poppins', sans-serif;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.text2 {
+	font-size: 2vw;
+	font-family: 'Poppins', sans-serif;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+
+
+.text3 {
+	font-size: 5vw;
+	font-family: 'Poppins', sans-serif;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+
+.text4 {
+	font-size: 2.1vw;
+	font-family: 'Poppins', sans-serif;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    padding-right: 10px;
+
+    
+   
+    
+}
+
+
+
+
+
