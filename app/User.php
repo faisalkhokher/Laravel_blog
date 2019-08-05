@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'admin'
     ];
 
     /**
@@ -36,4 +37,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // Todo ------ > RelatioShip of users and profile 
+   
+        public function profile()
+        {
+            return $this->hasOne('App\Profile');
+        }
+
+        // Todo  ------- > Online Status . . 
+
+        public function isOnline() 
+      {
+        return Cache::has('user-is-online-'. $this-> id);
+      }
+
+        
+    
+    
 }

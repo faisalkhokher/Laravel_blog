@@ -8,10 +8,7 @@ class Category extends Model
 {
     //
 
-
-
-
-
+    protected $fillable = ['name'];
 
 
     // relationshiop of One to Many 

@@ -12,7 +12,10 @@
                         </div>
                     @endif
 
-               <div class="text">Wellcome ! :)</div>    
+            <div class="text">Welcome You Are Logged In Our DB
+            <br/>
+            Now You can Access     
+            </div>    
                 </div>
             </div>
 

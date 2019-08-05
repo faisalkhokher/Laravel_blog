@@ -13,7 +13,7 @@
 	position: relative;
   text-decoration: none;
 	text-transform: uppercase;
-	width: 130px;
+	width: 110px;
 	z-index: 2;
 }
 
@@ -27,9 +27,9 @@
 	border-radius: 40px;
 	display: flex;
 	justify-content: center;
-	height: 98%;
+	height: 100%;
 	transition: background .5s ease;
-	width: 98%;
+	width: 100%;
 }
 
 .bn:hover span {
