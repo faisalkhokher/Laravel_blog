@@ -17,6 +17,7 @@ class ProfileController extends Controller
     public function index()
     {
         return view('users.profile')->with('user', Auth::user());
+        
     }
 
     /**
@@ -80,18 +81,18 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        // if($request->hasFile('avatar'))
-        // {
-        //     $avatar = $request-> avatar;
+        if($request->hasFile('avatar'))
+        {
+            $avatar = $request-> avatar;
 
-        //     $avatar_new_name = time() . $avatar->getClientOriginalName();
+            $avatar_new_name = time() . $avatar->getClientOriginalName();
 
-        //     $avatar->move('uploads/avaters', $avatar_new_name);
+            $avatar->move('uploads/avaters', $avatar_new_name);
 
-        //     $user-> profile-> avatar = 'uploads/avaters/' . $avatar_new_name ; 
+            $user-> profile-> avatar = 'uploads/avaters/' . $avatar_new_name ; 
 
-        //     $user-> profile->save();
-        // }
+            $user-> profile->save();
+        }
 
         $user -> name = $request-> name;
         $user -> email = $request-> email;

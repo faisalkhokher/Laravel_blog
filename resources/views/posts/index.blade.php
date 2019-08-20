@@ -6,6 +6,7 @@
 <table class="table table-dark">
     <thead class="thead-light">
         <tr>
+            <th>CreatedBy</th>
             <th>Image</th>
             <th>Title</th>
             <th>Editing</th>
@@ -18,6 +19,9 @@
         @foreach ($posts as $Post)
  
         <tr>
+                <td>
+                       {{ $Post -> user -> name }}
+                    </td>
                 <td>
                     <img src="{{ $Post -> featured}}" alt="{{ $Post -> title }}" height="50px" width="90px">
                 </td>

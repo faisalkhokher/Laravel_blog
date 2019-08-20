@@ -11,28 +11,50 @@
 |
 */
 
-Route::get('/test', function () {
-    return App\User::find(1)-> profile;
+// Route::get('/test', function () {
+//     return App\User::find(1)-> profile;
+// });
+
+// Route::get('/4584636', function () {
+//     return App\User::all();
+// });
+
+// ! FrountEnd Routes  - - - - >>>  slug routing 
+
+Route::get('/post/{slug}', [
+    'uses' => 'FrondEndController@singlePost',
+    'as' => 'post.single'
+]);
+
+// ! ------>>>>>> Show index pages  
+Route::get('/', [
+    'uses' => 'FrondEndController@index',
+    'as' => 'index'
+]);
+
+
+
+Route::get('/result', function () {
+    $posts = \App\Post::where('title' , 'like' , '%' .  request ('query')  .'%')-> get();
+
+    return view('result')->with('posts' , $posts)
+    ->with('title', 'Search results :' . request('query'))
+    ->with('setting', \App\Setting::first())
+    ->with('categories', \App\Category::take(6)->get())
+    ->with('query' , request('query'))
+    ->with('about' , \App\Profile::first());   ;
 });
 
-Route::get('/4584636', function () {
-    return App\User::all();
-});
 
 
 
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/category/{id}' , 'FrondEndController@category')->name('category.single');
 
 
 Auth::routes();
 
 
-// Todo Admin Route // 
+// ! Admins  Routes  - - - -
 
 Route::group(['prefix' => 'admin' , 'middleware' => 'auth'], function () {
 
@@ -50,25 +72,31 @@ Route::resource('cat', 'CategoryController');
 // ]);
 
 
-// Todo Delete Category // 
+// ! Delete category Routes  - - - - 
 
 Route::get('cat/delete/{id}', 'CategoryController@destroy')->name('cat.delete');
 // Delete Posts 
 Route::get('posts/delete/{id}' ,  'PostsController@destroy')->name('posts.delete');
+
+// ! Retrieve Posts after Delete - - - - 
+
 // Retrieve Posts after Delete
 Route::get('/posts/db/trashed' , 'PostsController@trashed')->name('posts.trashed');
+
+// ! Permanent Delete Posts - - - - 
 // Permanent Delete Posts 
 Route::get('/posts/db/kill/{id}'  , 'PostsController@kill')->name('posts.kill');
-// Restore Posts -> 
+
+// ! Restore Posts  - - - - 
 Route::get('/posts/db/restore/{id}' , 'PostsController@restore')->name('posts.restore');
 // 
 Route::get('/posts/db/restore/{id}' , 'PostsController@restore')->name('posts.restore');
 
-// Todo  Tags Route // 
+// !  Tags Route  - - - - 
 Route::resource('tag', 'TagsController');
 Route::get('/tag/db/{id}', 'TagsController@destroy')->name('tag.delete');
 
-// Todo Users Routes // 
+// ! Users Routes - - - - 
 Route::resource('user', 'UsersController');
 Route::get('/user/db/{id}' ,  'UsersController@destroy' )->name('user.delete')->middleware('deleteadmin');
 // Route::post('/user/store', [
@@ -80,9 +108,7 @@ Route::get('user/admin/{id}' , 'UsersController@admin')->name('user.admin')->mid
 Route::get('user/not_admin/{id}' , 'UsersController@not_admin')->name('user.not.admin')->middleware('notadmin');;
 
 
-
-
-// ! lalalalalal
+// ! User Profile Routesss 
 
 Route::get('user/database/profile', [
     'uses' => 'ProfileController@index',
@@ -95,6 +121,16 @@ Route::post('/user/databaseupdate/profile/update', [
 ]);
 
 
+                                //   Todo  Query Builder // 
+Route::get('/settings', [
+    'uses' => 'SettingsController@index',
+    'as' => 'settings'
+]);
+
+Route::post('/settings/update', [
+    'uses' => 'SettingsController@update',
+    'as' => 'settings.update'
+]);
 
 
 

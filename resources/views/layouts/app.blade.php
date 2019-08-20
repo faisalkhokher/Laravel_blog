@@ -36,11 +36,18 @@
 
     <link href="{{ asset('css/toaster.css') }}" rel="stylesheet">
 
+    {{-- Test
+    <link href="{{ asset('css/test.css') }}" rel="stylesheet"> --}}
     
+    <link href="{{ asset('css/test.css') }}" rel="stylesheet"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
     @yield('css')
 </head>
 <body>
+        @include('includes.tawk')
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
             <div class="container">
@@ -63,6 +70,7 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -81,6 +89,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route ('settings') }}">Settings</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -111,7 +120,7 @@
 
                            <ul class="list-group">
                                 <li class="list-group-item">
-                                    <a href="{{ route ('home') }}">Home</a>
+                                    <a href="{{ route ('home') }}">Dashboard</a>
                                 </li>
                             </ul>
 

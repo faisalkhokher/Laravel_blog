@@ -23,7 +23,7 @@
         {{-- Inputs --}}
         
         <div class="form-group">
-            <label for="title"><b> Titile </b></label>
+            <label for="title"><b> Title </b></label>
             <input  class="form-control" type="text" name="title" placeholder="Enter title">
         </div>
 
@@ -53,7 +53,7 @@
             </select>
         </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                     <label><b> You Can Select Multiple Tags </b></label>
              @foreach ($tags as $Tag)
                  <div class="form-check">
@@ -63,13 +63,34 @@
                    </label>
                  </div>
              @endforeach
-        </div>
+        </div> --}}
 
         <div class="form-group">
-            <label for="content">Content</label>
-            <textarea id="content" class="form-control" name="content" rows="3"></textarea>
-        </div>
 
+                <label for="my-input">Select One Or Multiple Tags</label>
+      
+                <select  class="form-control tags-selector" name="tags[]" id="tags" multiple>
+        
+                  @foreach ($tags as $Tag)
+                   
+      
+                     <option value="{{ $Tag -> id }}">
+       
+                      {{ $Tag -> tag }}
+      
+                    </option>
+                         
+                  @endforeach
+      
+                </select>
+      
+              </div>
+    
+
+              <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
+              </div>
 
         {{-- Store Button --}}
 
@@ -83,6 +104,49 @@
     </div> 
 </div>
 
+
+
+
+@endsection
+
+
+{{-- External LLinks of current page  --}}
+
+@section('script')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+
+
+
+
+
+{{-- Logic --}}
+<script>
+
+$(document).ready(function() {
+    $('.tags-selector').select2();
+})
+
+
+$(document).ready(function() {
+            $('#content').summernote();
+      });
+
+</script>
+
+
+
+{{-- End of Scrip  --}}
+@endsection
+
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
+{{-- Summernotes --}}
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
 
 
 

@@ -90,11 +90,13 @@
          @endforeach
     </div>
 
+
         <div class="form-group">
-            <label for="content">Content</label>
-            <textarea id="content" class="form-control" name="content" rows="3"> {{ $posts -> content }}
-            </textarea>
-        </div>
+                <label for="content">Content</label>
+                <textarea name="content" id="content" cols="5" rows="5" class="form-control">
+                    {{ $posts -> content }}
+                </textarea>
+          </div>
 
 
         {{-- Store Button --}}
@@ -114,3 +116,48 @@
 
 @endsection
 
+{{--  --}}
+
+
+
+{{-- External LLinks of current page  --}}
+
+@section('script')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+
+
+
+
+
+{{-- Logic --}}
+<script>
+
+$(document).ready(function() {
+    $('.tags-selector').select2();
+})
+
+
+$(document).ready(function() {
+            $('#content').summernote();
+      });
+
+</script>
+
+
+
+{{-- End of Scrip  --}}
+@endsection
+
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
+{{-- Summernotes --}}
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+
+
+
+@endsection

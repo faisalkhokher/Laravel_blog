@@ -26,7 +26,9 @@
                      {{ $User -> id }}
                     </td>
                 <td>
-                    <img src="{{ url ('uploads/avaters/1.jpg') }}"  height="60px" width="60px" style="border-radius: 50%;">
+                    {{-- <img src="{{ url ('uploads/avaters/1.jpg') }}"  height="60px" width="60px" style="border-radius: 50%;"> --}}
+                    {{-- <img src="{{ asset($user-> profile-> avatar) }}" alt="" width="60px" height="60px" style="border-radius: 50%;"> --}}
+                    <img src="{{asset(@$User-> profile-> avatar)}}" height="60px" height="60px" />
                 </td>
                 <td>
                    {{ $User -> name }}

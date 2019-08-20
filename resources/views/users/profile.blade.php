@@ -5,8 +5,9 @@
 @include('partials.error')
 
       <div class="panel panel-default">
-            <div class="panel-heading">
-                  Edit your profile 
+            <div class="panel-heading text-center">
+               <h4>  Edit your profile  </h4>
+               <h4>  This page have some bugs , over team have notice we will fix them  </h4>
             </div>
 
             <div class="panel-body">
@@ -28,19 +29,24 @@
                         </div>
 
                         <div class="form-group">
+                                    <label for="name">Upload new avatar</label>
+                                    <input type="file" name="avatar" class="form-control">
+                              </div>
+
+                        <div class="form-group">
                               <label for="name">Facebook profile</label>
-                              <input type="text" name="facebook" value="{{ $user-> profile-> facebook }}" class="form-control">
+                              <input type="text" name="facebook" value="{{ @$user-> profile-> facebook }}" class="form-control">
                         </div>
 
                         <div class="form-group">
                               <label for="name">Youtube profile</label>
-                              <input type="text" name="youtube" value="{{ $user-> profile-> youtube }}" class="form-control">
+                              <input type="text" name="youtube" value="{{ @$user-> profile-> youtube }}" class="form-control">
                         </div>
 
-                        <div class="form-group">
-                              <label for="about">About you</label>
-                              <textarea name="about" id="about" cols="6" rows="6" class="form-control">{{ $user -> profile-> about }}</textarea>
-                        </div>
+                              <div class="form-group">
+                                    <label for="about">About you</label>
+                                    <textarea name="about" id="about" cols="6" rows="6" class="form-control">{{ @$user -> profile-> about }}</textarea>
+                              </div>
 
                         <div class="form-group">
                               <div class="text-center">
