@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "http://backend.example.com/:splat"
-  status = 200
